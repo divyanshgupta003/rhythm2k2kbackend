@@ -1,0 +1,22 @@
+{
+  "name": "rhythm2k2kbackend",
+  "version": "1.0.0",
+  "description": "Rhythm 2020",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/divyanshgupta003/rhythm2k2kbackend.git"
+  },
+  "keywords": [
+    "Rhythm"
+  ],
+  "author": "Divyansh",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/divyanshgupta003/rhythm2k2kbackend/issues"
+  },
+  "homepage": "https://github.com/divyanshgupta003/rhythm2k2kbackend#readme"
+}
