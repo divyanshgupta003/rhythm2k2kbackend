@@ -1,10 +1,23 @@
 const User = require('../models/User');
 
-module.exports.create = function(req,res){
+module.exports.signUp = function(req , res){
     
-    User.findOne({ email : email } , function(err , user){
+
+    res.render('users-sign-up' , {
+        title : 'Sign-Up'
+    });
+
+    
+}
+
+module.exports.signIn = function(req , res){
+    
+}
+module.exports.create = function(req , res){
+
+User.findOne({ email : req.body.email } , function(err , user){
         if(req.body.password != req.body.re_password){
-            res.redirect('back');
+            return res.redirect('back');
         }
         if(err){
             console.log('error in finding the user' , err);
@@ -16,14 +29,13 @@ module.exports.create = function(req,res){
                     console.log('error in creating user', err);
                     return;
                 }
-               res.redirect('/');
+               return res.redirect('/');
             });
         }
         else{
-            res.redirect('users-sign-in');
+            return res.redirect('users-sign-in');
         }
         
         
     });
-
 }
