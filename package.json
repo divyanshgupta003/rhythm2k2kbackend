@@ -4,7 +4,7 @@
   "description": "Rhythm 2020",
   "main": "index.js",
   "scripts": {
-    "start" : "nodemon index.js",
+    "start": "nodemon index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -19,5 +19,8 @@
   "bugs": {
     "url": "https://github.com/divyanshgupta003/rhythm2k2kbackend/issues"
   },
-  "homepage": "https://github.com/divyanshgupta003/rhythm2k2kbackend#readme"
+  "homepage": "https://github.com/divyanshgupta003/rhythm2k2kbackend#readme",
+  "dependencies": {
+    "mongoose": "^5.8.11"
+  }
 }
