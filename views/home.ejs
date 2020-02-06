@@ -7,6 +7,15 @@
     <title><%= title %></title>
 </head>
 <body>
+
+    <% if(!locals.user){ %>
+        <button><a href="/users/sign-in">Sign-In</a></button>
+        <button><a href="/users/sign-up">Sign-Up</a></button>
+    <% }else{ %>
+        <button><a href="/users/dashboard">Dashboard</a></button>
+        <button><a href="/users/sign-out">Sign-Out</a></button>
+    <% } %>
+    <br><br><br>
     Welcome to Rhythm 2020
 </body>
 </html>

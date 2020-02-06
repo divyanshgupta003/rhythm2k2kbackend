@@ -3,8 +3,36 @@ const port = 8000;
 const app = express();
 const keys = require('./keys');
 const mongoose = require('mongoose');
+const passport = require('passport');
+const session = require('express-session');
+const MongoStore = require('connect-mongo')(session);
+const passportLocalStrategy = require('./config/passport-local-strategy');
+
 
 app.use(express.urlencoded());
+
+app.use(session({
+    secret : 'rhythm',
+    resave : false,
+    saveUninitialized : false,
+    cookie : {
+        maxAge : (1000 * 60 * 100)
+    },
+    store : new MongoStore({
+        mongooseConnection : mongoose.connection,
+        autoRemove : 'disabled'
+    },
+    function(err){
+        if(err){
+            console.log(err || 'connect mongo-store OK');
+        }
+    })
+}));
+
+app.use(passport.initialize());
+app.use(passport.session());
+
+app.use(passport.setAuthenticatedUser);
 
 //setting the view engine
 app.set('view engine' , 'ejs');

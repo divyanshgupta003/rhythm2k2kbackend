@@ -21,6 +21,10 @@
   },
   "homepage": "https://github.com/divyanshgupta003/rhythm2k2kbackend#readme",
   "dependencies": {
-    "mongoose": "^5.8.11"
+    "connect-mongo": "^3.2.0",
+    "express-session": "^1.17.0",
+    "mongoose": "^5.8.11",
+    "passport": "^0.4.1",
+    "passport-local": "^1.0.0"
   }
 }
