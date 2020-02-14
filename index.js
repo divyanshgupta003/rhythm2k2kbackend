@@ -7,7 +7,7 @@ const passport = require('passport');
 const session = require('express-session');
 const MongoStore = require('connect-mongo')(session);
 const passportLocalStrategy = require('./config/passport-local-strategy');
-
+const middle = require('./event-add')
 
 app.use(express.urlencoded());
 
@@ -40,6 +40,9 @@ app.set('view engine' , 'ejs');
 // for the views files(ejs)
 app.set('views' , './views');
 
+//middleware for adding the event once
+// app.use(middle.add);
+
 //handling the routes
 app.use('/' , require('./routes'));
 
@@ -54,6 +57,7 @@ mongoose.connect(keys.mongouri , {
         console.log(err);
         return;
     }
+    
     console.log('database working');
 
     app.listen(port , function(ferr){

@@ -1,10 +1,16 @@
 const mongoose = require('mongoose');
+const Event = require('./Event');
 
 const userSchema = new mongoose.Schema({
     name : {
         type : String,
         required : true
     },
+    eventNumber : [
+        {
+            type : Number
+        }
+    ],
     email : {
         type : String,
         required : true,
