@@ -7,6 +7,8 @@ module.exports.home = function(req,res){
             console.log('error in finding the event' , err);
             return;
         }
+        console.log(event);
+        
         res.render('event-list' , {
             event : event,
             title : 'Event List'

@@ -7,8 +7,9 @@
 </head>
 <body>
 
-    <%for(i in event){%>
-        <a href="/<%= i.number %>"><%= i.name %></a>
+    
+    <%for(i of event){%>
+        <a href="/<%= i.number %>"><%= i.name %></a><br>
     <%}%>
     
 </body>

@@ -12,6 +12,7 @@ app.get('/dashboard' , passport.checkAuthentication, userControllers.dashboard);
 app.get('/update' , passport.checkAuthentication , userControllers.update);
 app.post('/update-profile' , passport.checkAuthentication , userControllers.updateProfile);
 
+
 app.post('/create-session' , passport.authenticate(
     'local',
     {failureRedirect: '/users/sign-in'}) , userControllers.createSession);

@@ -49,10 +49,10 @@ app.use('/' , require('./routes'));
 // const db = mongoose.connection;
 
 
-mongoose.connect(keys.mongouri , {
-    useNewUrlParser : true,
+mongoose.connect(keys.mongouri , {  useNewUrlParser : true,
     useUnifiedTopology : true
-}, function(err){
+},
+   function(err){
     if(err){
         console.log(err);
         return;
@@ -60,12 +60,21 @@ mongoose.connect(keys.mongouri , {
     
     console.log('database working');
 
-    app.listen(port , function(ferr){
+    app.listen(port , function(err){
         if(err){
             console.log(err);
-            
+            return;
         }
         console.log('Port running fine on ' + port);
     });
     
 });
+
+// mongoose.connect(keys.mongouri,(err)=>{
+//     if(err)
+//     console.log(err);
+//     else
+//     console.log("connected");
+    
+    
+// })

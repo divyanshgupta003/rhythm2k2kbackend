@@ -7,7 +7,7 @@ module.exports.add = function(req,res,next){
         number : 1,
     } , function(err , event){
         if(err){
-            console.log('error in creating event');
+            console.log('error in creating event',err);
             return;
         }
     } );
@@ -16,7 +16,7 @@ module.exports.add = function(req,res,next){
         number : 2,
     } , function(err , event){
         if(err){
-            console.log('error in creating event');
+            console.log('error in creating event',err);
             return;
         }
     } );
