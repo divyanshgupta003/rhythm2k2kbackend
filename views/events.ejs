@@ -12,8 +12,8 @@
         Register for this event
     <br><br>
     I want to join a team
-    <form action="" method="POST">
-        <input type="text" name="teamId" placeholder="Write the team code">
+    <form action="/register/joinTeam" method="POST">
+        <input type="text" name="teamCode" placeholder="Write the team code">
         <input type="hidden" name="eventNumber" value="<%=event.number%>">
         <input type="submit" value="Join Team">
     </form>

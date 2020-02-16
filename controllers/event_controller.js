@@ -31,9 +31,8 @@ module.exports.specificEvent = function(req , res){
                 event : event
             })
         }
-        
         res.render('events' , {
-            flag : true,
+            flag : false,
             title : event.name,
             event : event
         })

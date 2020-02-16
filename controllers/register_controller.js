@@ -36,5 +36,16 @@ module.exports.createTeam = function(req,res){
 };
 
 module.exports.joinTeam = function(req,res){
-
+    if(req.user.eventNumber.includes(req.body.eventNumber)){
+        res.redirect('/event-list');
+        return;
+    }
+    Team.findOne({code : req.body.teamCode} , function(err , team){
+        if(err){
+            return console.log('error in finding the team' , err);
+        }
+        team.user.push(req.user.id);
+        team.save();
+        return res.redirect(`/event-list/${req.body.eventNumber}`);
+    });
 };
