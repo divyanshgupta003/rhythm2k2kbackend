@@ -8,7 +8,8 @@
 <body>
     <%= event.name %>
     <br><br>
-    Register for this event
+    <%if(flag == false){%>
+        Register for this event
     <br><br>
     I want to join a team
     <form action="" method="POST">
@@ -23,5 +24,9 @@
         <input type="hidden" name="eventNumber" value="<%=event.number%>">
         <input type="submit" value="Make Team">
     </form>
+    <%}else{%>
+        
+    <%}%>
+    
 </body>
 </html>

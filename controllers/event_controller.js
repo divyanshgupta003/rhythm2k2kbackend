@@ -24,7 +24,16 @@ module.exports.specificEvent = function(req , res){
             console.log('error in finding the specific system' , err);
             return;
         }
+        if(req.user.eventNumber.includes(req.params.number)){
+            res.render('events' , {
+                flag : true,
+                title : event.name,
+                event : event
+            })
+        }
+        
         res.render('events' , {
+            flag : true,
             title : event.name,
             event : event
         })
