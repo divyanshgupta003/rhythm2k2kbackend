@@ -24,17 +24,28 @@ module.exports.specificEvent = function(req , res){
             console.log('error in finding the specific system' , err);
             return;
         }
-        if(req.user.eventNumber.includes(req.params.number)){
-            res.render('events' , {
-                flag : true,
+        if(req.user){
+            if(req.user.eventNumber.includes(req.params.number)){
+                return res.render('events' , {
+                    flag : true,
+                    title : event.name,
+                    event : event,
+                    userPresent : true
+                })
+            }
+            return res.render('events' , {
+                flag : false,
                 title : event.name,
-                event : event
+                event : event,
+                userPresent : true
             })
-        }
-        res.render('events' , {
+       }else{
+        return res.render('events' , {
             flag : false,
             title : event.name,
-            event : event
+            event : event,
+            userPresent : false
         })
+       }
     });
 };

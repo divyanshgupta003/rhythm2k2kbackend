@@ -27,6 +27,7 @@ module.exports.createTeam = function(req,res){
             }
             console.log(team);
             user.eventNumber.push(req.body.eventNumber);
+            user.save();
             return res.redirect(`/event-list/${req.body.eventNumber}`);
         });
         
@@ -46,6 +47,15 @@ module.exports.joinTeam = function(req,res){
         }
         team.user.push(req.user.id);
         team.save();
-        return res.redirect(`/event-list/${req.body.eventNumber}`);
+        User.findById(req.user.id , function(err , user){
+            if(err){
+                console.log('error in finding user' , err);
+                return;
+            }
+            console.log(team);
+            user.eventNumber.push(req.body.eventNumber);
+            user.save();
+            return res.redirect(`/event-list/${req.body.eventNumber}`);
+        });
     });
 };
