@@ -6,8 +6,22 @@
     <title><%= title %></title>
 </head>
 <body>
-    <% event.name %>
-    <br>
-    <a href="/register">Register for this event</a>
+    <%= event.name %>
+    <br><br>
+    Register for this event
+    <br><br>
+    I want to join a team
+    <form action="" method="POST">
+        <input type="text" name="teamId" placeholder="Write the team code">
+        <input type="hidden" name="eventNumber" value="<%=event.number%>">
+        <input type="submit" value="Join Team">
+    </form>
+    <br><br>
+    I want to make a team
+    <form action="/register/createTeam" method="POST">
+        <input type="text" name="teamName" placeholder="Write the team Name">
+        <input type="hidden" name="eventNumber" value="<%=event.number%>">
+        <input type="submit" value="Make Team">
+    </form>
 </body>
 </html>
