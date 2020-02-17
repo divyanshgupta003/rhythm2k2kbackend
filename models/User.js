@@ -1,5 +1,6 @@
 const mongoose = require('mongoose');
 const Event = require('./Event');
+const Team = require('./Team');
 
 const userSchema = new mongoose.Schema({
     name : {
@@ -9,6 +10,12 @@ const userSchema = new mongoose.Schema({
     eventNumber : [
         {
             type : Number
+        }
+    ],
+    team : [
+        {
+            type : mongoose.Schema.Types.ObjectId,
+            ref : 'Team'
         }
     ],
     email : {

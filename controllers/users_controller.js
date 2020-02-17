@@ -63,11 +63,16 @@ module.exports.dashboard = function(req , res){
 
     const id = req.user.id;
 
-    User.findById(id , function(err , user){
+    User.findById(id).populate({
+        path : 'team'
+    }
+    ).exec(function(err , user){
+        // User.findById(id ,function(err , user){
         if(err){
             console.log('error in finding user' , err);
             return;
         }
+        console.log(user.team[0]);
         res.render('users-dashboard' , {
             user : user,
         });

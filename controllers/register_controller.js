@@ -25,6 +25,8 @@ module.exports.createTeam = function(req,res){
                 console.log('error in finding user' , err);
                 return;
             }
+            user.team.push(team.id);
+            user.save();
             console.log(team);
             user.eventNumber.push(req.body.eventNumber);
             user.save();
@@ -53,6 +55,8 @@ module.exports.joinTeam = function(req,res){
                 return;
             }
             console.log(team);
+            user.team.push(team.id);
+            user.save();
             user.eventNumber.push(req.body.eventNumber);
             user.save();
             return res.redirect(`/event-list/${req.body.eventNumber}`);
