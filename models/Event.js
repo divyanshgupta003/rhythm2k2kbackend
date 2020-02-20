@@ -10,13 +10,13 @@ const eventSchema = new mongoose.Schema({
         type : Number,
         required : true,
         unique : true
-    }
-    // team : [
-    //     {
-    //         type : mongoose.Schema.Types.ObjectId,
-    //         ref : 'Team'
-    //     }
-    // ]
+    },
+    team : [
+        {
+            type : mongoose.Schema.Types.ObjectId,
+            ref : 'Team'
+        }
+    ]
 });
 
 module.exports = mongoose.model('Event' , eventSchema);
