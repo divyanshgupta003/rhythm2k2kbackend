@@ -8,7 +8,7 @@ module.exports.home = function(req,res){
             console.log('error in finding the event' , err);
             return;
         }
-        console.log(event);
+        // console.log(event);
         
         res.render('event-list' , {
             event : event,
@@ -26,7 +26,7 @@ module.exports.specificEvent = function(req , res){
                 return console.log(err);
                 
             }
-            console.log(event);
+            // console.log(event);
             
             if(!req.user){
                 res.render('events' , {
@@ -49,7 +49,7 @@ module.exports.specificEvent = function(req , res){
                     if(user.eventNumber.includes(req.params.number)){
                         for(team of user.team){
                             if(team.event = req.params.number){
-                                console.log(team);
+                                // console.log(team);
                                 
                                 return res.render('events' , {
                                     title : event.name,

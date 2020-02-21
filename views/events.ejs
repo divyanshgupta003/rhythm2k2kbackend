@@ -27,6 +27,7 @@
             <input type="submit" value="Make Team">
         </form>
         <%}else{%>
+            <a href="/register/exit-team?teamId=<%=team._id%>&eventNumber=<%=event.number%>">Exit team</a>
       <ul>
           <li>
               <%=team.name%>
@@ -42,7 +43,9 @@
               </ul>
           </li>
       </ul>
-    <%}}%>
+    <%}}else{%>
+        You need to sign-in, then only you will be able to access the register button
+    <%}%>
             
     
 </body>

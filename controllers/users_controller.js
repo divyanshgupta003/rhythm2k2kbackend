@@ -17,6 +17,7 @@ module.exports.signIn = function(req , res){
     }
     return res.render('users-sign-in');
 }
+
 module.exports.create = function(req , res){
 
 User.findOne({ email : req.body.email } , function(err , user){
@@ -58,7 +59,8 @@ module.exports.signOut = function(req , res){
 
 module.exports.dashboard = function(req , res){
     if(!req.isAuthenticated()){
-        return res.redirect('users-sign-in');
+        console.log('we are here');
+        return res.redirect('sign-in');
     }
 
     const id = req.user.id;
@@ -72,7 +74,7 @@ module.exports.dashboard = function(req , res){
             console.log('error in finding user' , err);
             return;
         }
-        console.log(user.team[0]);
+        // console.log(user.team[0]);
         res.render('users-dashboard' , {
             user : user,
         });
