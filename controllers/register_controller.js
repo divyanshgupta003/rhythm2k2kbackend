@@ -60,15 +60,22 @@ module.exports.joinTeam = async function(req,res){
         
     let team = await Team.findOne({code : req.body.teamCode})
 
+    if(!team){
+        req.flash('error' , 'You have typed wrong team Code');
+        return res.redirect('back');
+    }
         if(event.team.includes(team.id)){
+
             team.user.push(req.user.id);
-            team.save();
-            User.findById(req.user.id);
+            await team.save();
+
+            let user = await User.findById(req.user.id);
+
             // console.log(team);
             user.team.push(team.id);
-            user.save();
             user.eventNumber.push(req.body.eventNumber);
-            user.save();
+            await user.save();
+            
             req.flash('success' , 'You have successfully joined the team');
             return res.redirect(`/event-list/${req.body.eventNumber}`);
         }else{
@@ -104,7 +111,7 @@ module.exports.exitTeam = async function(req , res){
             let user = await User.findByIdAndUpdate(req.user.id , {$pull : {team : req.query.teamId , eventNumber : req.query.eventNumber}});
             let newTeam = await Team.findByIdAndUpdate(team.id , {$pull : {user : req.user.id} });
         }
-        req.flash('success' , 'You have successfully exited the team');
+        req.flash('success' , 'You have successfully exit the team');
         return res.redirect('back');
     }catch(err){
         console.log(err);

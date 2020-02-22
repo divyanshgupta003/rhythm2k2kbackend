@@ -17,7 +17,9 @@ module.exports.signIn = function(req , res){
         req.flash('error' , 'You are already a user');
        return res.redirect('/');
     }
-    return res.render('users-sign-in');
+    return res.render('users-sign-in' , {
+        title : 'Sign In'
+    });
 }
 
 module.exports.create = async function(req , res){
@@ -68,6 +70,7 @@ module.exports.dashboard = async function(req , res){
         // User.findById(id ,function(err , user){
         // console.log(user.team[0]);
         res.render('users-dashboard' , {
+            title : 'Dashboard',
             user : user,
         });
     }catch(err){
@@ -86,6 +89,7 @@ module.exports.update = async function(req,res){
     
         let user = await User.findById(id)
         res.render('users-update' , {
+            title : 'Update',
             user : user,
         });
     }catch(err){
