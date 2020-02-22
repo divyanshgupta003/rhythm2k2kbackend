@@ -2,6 +2,7 @@ const User = require('../models/User');
 
 module.exports.signUp = function(req , res){
     if(req.isAuthenticated()){
+        req.flash('error' , 'You are already a user');
         return res.redirect('/');
     }
     
@@ -13,109 +14,101 @@ module.exports.signUp = function(req , res){
 
 module.exports.signIn = function(req , res){
     if(req.isAuthenticated()){
+        req.flash('error' , 'You are already a user');
        return res.redirect('/');
     }
     return res.render('users-sign-in');
 }
 
-module.exports.create = function(req , res){
-
-User.findOne({ email : req.body.email } , function(err , user){
+module.exports.create = async function(req , res){
+    try{
+        let user = await User.findOne({ email : req.body.email })
         if(req.body.password != req.body.re_password){
+            req.flash('error' , 'password and confirm password does not match');
             return res.redirect('back');
-        }
-        if(err){
-            console.log('error in finding the user' , err);
-            return;
         }
         if(!user){
-            User.create(req.body , function(err , newUser){
-                if(err){
-                    console.log('error in creating user', err);
-                    return;
-                }
-                console.log('user created');
-                
-               return res.redirect('/users/sign-in');
-            });
+            let newUser = await User.create(req.body)
+            req.flash('success' , 'Sign In for further view');
+            return res.redirect('/users/sign-in');
         }
         else{
-            console.log('user already exists');
-            
+            req.flash('error' , 'User with this email Id already exists');
             return res.redirect('back');
         }
-    });
+    }catch(err){
+        return console.log(err);
+        
+    }
 }
 module.exports.createSession = function(req,res){
-    console.log('user signed-in');
-    
+    req.flash('success' , 'You are signed In now');
     return res.redirect('/');
 }
 
 module.exports.signOut = function(req , res){
     req.logOut();
+    req.flash('success' , 'You are Logged Out');
     res.redirect('/');
 }
 
-module.exports.dashboard = function(req , res){
+module.exports.dashboard = async function(req , res){
+    try{
+
     if(!req.isAuthenticated()){
-        console.log('we are here');
+        req.flash('error' , 'You need to Sign-In first for accessing this');
         return res.redirect('sign-in');
     }
 
     const id = req.user.id;
 
-    User.findById(id).populate({
+    let user = await User.findById(id).populate({
         path : 'team'
-    }
-    ).exec(function(err , user){
+    });
         // User.findById(id ,function(err , user){
-        if(err){
-            console.log('error in finding user' , err);
-            return;
-        }
         // console.log(user.team[0]);
         res.render('users-dashboard' , {
             user : user,
         });
-    });
+    }catch(err){
+        return console.log(err);
+        
+    }
 }
 
-module.exports.update = function(req,res){
-    if(!req.isAuthenticated()){
-        return res.redirect('users-sign-in');
-    }
-
-    const id = req.user.id;
-
-    User.findById(id , function(err , user){
-        if(err){
-            console.log('error in finding user' , err);
-            return;
+module.exports.update = async function(req,res){
+    try{
+        if(!req.isAuthenticated()){
+            return res.redirect('users-sign-in');
         }
+    
+        const id = req.user.id;
+    
+        let user = await User.findById(id)
         res.render('users-update' , {
             user : user,
         });
-    });
-
+    }catch(err){
+        return console.log(err);
+        
+    }
 }
 
-module.exports.updateProfile = function(req, res){
-    if(!req.isAuthenticated()){
-        return res.redirect('users-sign-in');
-    }
-
-    const id = req.user.id;
-
-    User.findById(id , function(err , user){
-        if(err){
-            console.log('error in finding and updating user' , err);
-            return;
+module.exports.updateProfile = async function(req, res){
+    try{
+        if(!req.isAuthenticated()){
+            return res.redirect('users-sign-in');
         }
+    
+        const id = req.user.id;
+    
+        let user = await User.findById(id);
+            user.name = req.body.name;
+            user.save();
+            res.redirect('/users/dashboard');
         
-        user.name = req.body.name;
-        user.save();
-        res.redirect('/users/dashboard');
-    });
-
+    }catch(err){
+        return console.log(err);
+        
+    }
 }

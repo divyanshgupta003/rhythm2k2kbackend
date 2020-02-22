@@ -21,7 +21,9 @@
   },
   "homepage": "https://github.com/divyanshgupta003/rhythm2k2kbackend#readme",
   "dependencies": {
+    "connect-flash": "^0.1.1",
     "connect-mongo": "^3.2.0",
+    "express-ejs-layouts": "^2.5.0",
     "express-session": "^1.17.0",
     "mongoose": "^5.8.11",
     "passport": "^0.4.1",

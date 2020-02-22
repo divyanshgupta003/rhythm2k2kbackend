@@ -3,13 +3,20 @@ const port = 8000;
 const app = express();
 const keys = require('./keys');
 const mongoose = require('mongoose');
+const expressLayouts = require('express-ejs-layouts');
 const passport = require('passport');
 const session = require('express-session');
 const MongoStore = require('connect-mongo')(session);
 const passportLocalStrategy = require('./config/passport-local-strategy');
 const middle = require('./event-add')
+const flash = require('connect-flash');
+const flashMiddleware = require('./config/flash-middleware');
 
 app.use(express.urlencoded());
+app.use(expressLayouts);
+//extract styles and scripts from sub pages into layout
+app.set('layout extractStyles', true);
+app.set('layout extractScripts', true);
 
 app.use(session({
     secret : 'rhythm',
@@ -31,6 +38,10 @@ app.use(session({
 
 app.use(passport.initialize());
 app.use(passport.session());
+
+//setting flash messages
+app.use(flash());
+app.use(flashMiddleware.setFlash);
 
 app.use(passport.setAuthenticatedUser);
 
