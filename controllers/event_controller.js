@@ -39,7 +39,7 @@ module.exports.specificEvent = async function(req , res){
                 
                 if(user.eventNumber.includes(req.params.number)){
                     for(team of user.team){
-                        if(team.event = req.params.number){
+                        if(team.event == req.params.number){
                             // console.log(team);
                                 
                             return res.render('events' , {

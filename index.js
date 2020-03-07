@@ -14,6 +14,10 @@ const flashMiddleware = require('./config/flash-middleware');
 
 app.use(express.urlencoded());
 app.use(expressLayouts);
+
+//setting static file access
+app.use(express.static("./assets"));
+
 //extract styles and scripts from sub pages into layout
 app.set('layout extractStyles', true);
 app.set('layout extractScripts', true);
