@@ -1,8 +1,5 @@
 @import url(
-  https://fonts.googleapis.com/css?family=Roboto:400,
-  300,
-  600,
-  400italic
+  https://fonts.googleapis.com/css?family=Roboto:400,300,600,400italic
 );
 * {
   margin: 0;
@@ -24,7 +21,7 @@ body {
   line-height: 30px;
   height: auto;
   color: #777;
-  background-image: url("./images/login.jpg");
+  background-image: url("../images/login.jpg");
   background-size: cover;
   /* height: auto; */
   /* width: 100%; */
@@ -125,7 +122,7 @@ fieldset {
 }
 
 #contact button[type="submit"]:hover {
-  background: #eba834
+  background: #eba834;
   -webkit-transition: background 0.3s ease-in-out;
   -moz-transition: background 0.3s ease-in-out;
   transition: background-color 0.3s ease-in-out;
@@ -163,7 +160,7 @@ fieldset {
 @media only screen and (max-width: 1200px) {
   /* For tablets: */
   body{
-    background-image: url('pattern2.jpg');
+    background-image: url('../images/pattern2.jpg');
     /* height: auto;
      */
      background-repeat: repeat;

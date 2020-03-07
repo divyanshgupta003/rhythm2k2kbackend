@@ -10,6 +10,8 @@ body {
     font-size: 15px;
     font-weight: normal;
     color: hsl(0, 0%, 90%);
+    width:100vw;
+    overflow-x: hidden;
 }
 
 @font-face {

@@ -1,0 +1,42 @@
+<header class="site-header">
+    <div class="header-bar">
+        <div class="container-fluid">
+            <div class="row align-items-center">
+                <div class="col-10 col-lg-4">
+                    <h1 class="site-branding flex">
+                        <a href="#">Rhythm </a>
+                    </h1>
+                </div>
+
+                <div class="col-2 col-lg-8">
+                    <nav class="site-navigation">
+                        <div class="hamburger-menu d-lg-none">
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                        </div><!-- .hamburger-menu -->
+
+                        <ul>
+                            <li><a href="#">HOME</a></li>
+                            <li><a href="#">Events</a></li>
+                            <li><a href="#">Gallery</a></li>
+                            <li><a href="#">Contact</a></li>
+                            <% if(!locals.user){ %>
+                                <li><a href="/users/sign-in">Sign-In</a></li> 
+                                <li><a href="/users/sign-up">Sign-Up</a></li>
+                                <!-- <button><a href="/users/sign-in">Sign-In</a></button>
+                                <button><a href="/users/sign-up">Sign-Up</a></button> -->
+                            <% }else{ %>
+                                <li><a href="/users/dashboard">Profile</a></li> 
+                                <li><a href="/users/sign-out">Sign-Out</a></li>
+                                <!-- <button><a href="/users/dashboard">Dashboard</a></button>
+                                <button><a href="/users/sign-out">Sign-Out</a></button> -->
+                            <% } %>
+                        </ul>
+                    </nav><!-- .site-navigation -->
+                </div><!-- .col-12 -->
+            </div><!-- .row -->
+        </div><!-- container-fluid -->
+    </div><!-- header-bar -->
+</header><!-- .site-header -->
