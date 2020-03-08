@@ -21,7 +21,7 @@ body {
   line-height: 30px;
   height: auto;
   color: #777;
-  background-image: url("../images/register.jpg");
+  background-image: url("../images/login.jpg");
   background-size: cover;
   background-position: top;
   /* height: auto; */
@@ -38,6 +38,7 @@ body {
   width: 100%;
   margin: 0 auto;
   position: relative;
+  padding-top : 150px;
   /* z-index: 3; */
   /* background-image:url('tomail.png') ; */
 }
@@ -55,7 +56,7 @@ body {
 #users-sign-up-contact {
   background: #f9f9f9;
   padding: 25px;
-  margin: 150px 0;
+  /* margin: 150px 0; */
   box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
 }
 

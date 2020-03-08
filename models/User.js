@@ -26,6 +26,26 @@ const userSchema = new mongoose.Schema({
     password : {
         type : String,
         required : true
+    },
+    phone : {
+        type : Number,
+        required : true
+    },
+    college : {
+        type : String,
+        required : true
+    },
+    rollNumber : {
+        type : Number,
+        required : true
+    },
+    branch : {
+        type : String,
+        required : true
+    },
+    year : {
+        type : String,
+        required : true
     }
 });
 

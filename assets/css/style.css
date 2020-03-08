@@ -4,6 +4,9 @@
 .flex {
     display: flex;
 }
+html{
+    scroll-behavior: smooth;
+}
 
 body {
     font-family: 'Poppins', sans-serif;
@@ -16,8 +19,8 @@ body {
 
 @font-face {
     font-family: "mountains";
-    src: url(fonts/beyond_the_mountains.ttf);
-    src: url(fonts/beyond_the_mountains.otf);
+    src: url('./fonts/beyond_the_mountains.ttf');
+    src: url('./fonts/beyond_the_mountains.otf');
     font-weight: 400;
 }
 
