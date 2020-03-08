@@ -14,6 +14,7 @@ module.exports.createTeam = async function(req,res){
     
         //creating the unique code
         var uniqueCode = await (Date.now().toString(36) + Math.random().toString(36).substr(2, 5)).toUpperCase();
+        
         //creating the new team
         let team = await Team.create({
             name : req.body.teamName,
@@ -42,7 +43,7 @@ module.exports.createTeam = async function(req,res){
             return res.redirect(`/event-list/${req.body.eventNumber}`);
                  
     }catch(err){
-        return console.log(err);
+        return res.redirect('/error');
     }
     
 };
@@ -62,6 +63,10 @@ module.exports.joinTeam = async function(req,res){
 
     if(!team){
         req.flash('error' , 'You have typed wrong team Code');
+        return res.redirect('back');
+    }
+    if(team.user.length >= event.maxPart){
+        req.flash('error' , 'No more participants allowed in the team(Check the event rules)');
         return res.redirect('back');
     }
         if(event.team.includes(team.id)){
@@ -85,7 +90,7 @@ module.exports.joinTeam = async function(req,res){
         
     }catch(err){
         req.flash('error' , 'error in joining a team');
-        return console.log(err);
+        return res.redirect('/error');
     }
     
 };
@@ -114,8 +119,8 @@ module.exports.exitTeam = async function(req , res){
         req.flash('success' , 'You have successfully exit the team');
         return res.redirect('back');
     }catch(err){
-        console.log(err);
-        return;
+        // console.log(err);
+        return res.redirect('/error');
     }
       
 };

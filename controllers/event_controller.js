@@ -5,14 +5,13 @@ module.exports.home = async function(req,res){
     try{
 
         let event = await Event.find({});
-            res.render('event-list' , {
+            return res.render('event-list' , {
                 event : event,
                 title : 'Event List'
             });
     }catch(err){
-        req.flash('success' , 'error in finding events');
-        return console.log(err);
-        
+        req.flash('error' , 'error in finding events');
+        return res.redirect('/error');
     }
 }; 
 
@@ -61,7 +60,8 @@ module.exports.specificEvent = async function(req , res){
             }
     
     }catch(err){
-        console.log(err);
-        return;
+        // console.log(err);
+        req.flash('error' , 'error in finding events');
+        return res.redirect('/error');
     }
 };

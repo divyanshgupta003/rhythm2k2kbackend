@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            padding: 0;
+            margin : 0;
+            overflow : hidden;
+        }
+        
+    .error-page{
+        background-image: url(../images/pattern2.jpg);
+        width:100vw;
+        height : 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    .error-page-container{
+        padding:10%;
+        height : 40vh;
+        width: 50vw;
+        background-color: white;
+        /* display: flex; */
+        border : 2px solid black;
+        color : #be0808;
+        box-shadow: 5px 10px 8px 10px #888888;
+    }
+    </style>
+    </head>
+<body>
+    <div class="error-page">
+        <div class="error-page-container">
+            <h1>Oops URL not found!!</h1><br>
+            <h4>* Check the URL again</h4><br>
+            <h4>* For any logical query contact the organizers</h4>
+        </div>
+    </div>
+
+    <script>
+            
+        <% if (flash.success && flash.success.length > 0) {%>
+            new Noty({
+                theme: 'relax',
+                text: '<%=flash.success%>',
+                type: 'success',
+                layout: 'topRight',
+                timeout: 1500
+                
+            }).show();    
+        <%} %>
+
+        <% if (flash.error && flash.error.length > 0) {%>
+            new Noty({
+                theme: 'relax',
+                text: '<%= flash.error %>',
+                type: 'error',
+                layout: 'topRight',
+                timeout: 1500
+                
+            }).show();    
+        <%} %>
+        </script>
+</body>
+</html>

@@ -8,5 +8,6 @@ router.get('/' , homeController.home);
 router.use('/users' , require('./users'));
 router.use('/event-list' , require('./event'));
 router.use('/register' , require('./register'));
+router.use('*' , homeController.errorPage);
 
 module.exports = router;

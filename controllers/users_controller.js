@@ -1,25 +1,37 @@
 const User = require('../models/User');
 
 module.exports.signUp = function(req , res){
-    if(req.isAuthenticated()){
-        req.flash('error' , 'You are already a user');
-        return res.redirect('/');
+    try{
+        if(req.isAuthenticated()){
+            req.flash('error' , 'You are already a user');
+            return res.redirect('/');
+        }
+        
+        res.render('users-sign-up' , {
+            title : 'Sign-Up'
+        });
+    }
+    catch(error){
+        return res.redirect('/error');
     }
     
-    res.render('users-sign-up' , {
-        title : 'Sign-Up'
-    });
 
 }
 
 module.exports.signIn = function(req , res){
-    if(req.isAuthenticated()){
-        req.flash('error' , 'You are already a user');
-       return res.redirect('/');
+    try{
+        if(req.isAuthenticated()){
+            req.flash('error' , 'You are already a user');
+           return res.redirect('/');
+        }
+        return res.render('users-sign-in' , {
+            title : 'Sign In'
+        });
     }
-    return res.render('users-sign-in' , {
-        title : 'Sign In'
-    });
+    catch(error){
+        return res.redirect('/error');
+    }
+    
 }
 
 module.exports.create = async function(req , res){
@@ -39,19 +51,33 @@ module.exports.create = async function(req , res){
             return res.redirect('back');
         }
     }catch(err){
-        return console.log(err);
+        return res.redirect('/error');
         
     }
 }
 module.exports.createSession = function(req,res){
-    req.flash('success' , 'You are signed In now');
-    return res.redirect('/');
+    try{
+        req.flash('success' , 'You are signed In now');
+        return res.redirect('/');
+    }
+    catch(err){
+        return res.redirect('/error');
+        
+    }
+    
 }
 
 module.exports.signOut = function(req , res){
-    req.logOut();
-    req.flash('success' , 'You are Logged Out');
-    res.redirect('/');
+    try{
+        req.logOut();
+        req.flash('success' , 'You are Logged Out');
+        return res.redirect('/');
+    }
+    catch(error){
+        return res.redirect('/error');
+       
+    }
+    
 }
 
 module.exports.dashboard = async function(req , res){
@@ -69,12 +95,12 @@ module.exports.dashboard = async function(req , res){
     });
         // User.findById(id ,function(err , user){
         // console.log(user.team[0]);
-        res.render('users-dashboard' , {
+        return res.render('users-dashboard' , {
             title : 'Dashboard',
             user : user,
         });
     }catch(err){
-        return console.log(err);
+        return res.redirect('/error');
         
     }
 }
@@ -88,12 +114,12 @@ module.exports.update = async function(req,res){
         const id = req.user.id;
     
         let user = await User.findById(id)
-        res.render('users-update' , {
+        return res.render('users-update' , {
             title : 'Update',
             user : user,
         });
     }catch(err){
-        return console.log(err);
+        return res.redirect('/error');
         
     }
 }
@@ -109,10 +135,10 @@ module.exports.updateProfile = async function(req, res){
         let user = await User.findById(id);
             user.name = req.body.name;
             user.save();
-            res.redirect('/users/dashboard');
+            return res.redirect('/users/dashboard');
         
     }catch(err){
-        return console.log(err);
+        return res.redirect('/error');
         
     }
 }
