@@ -5,7 +5,7 @@
 
     <!-- <section class="main-section "> -->
         <div class="profile-details-section">
-            <%if(user.gender == 'male'){%>{
+            <%if(user.gender == 'Male'){%>
                 <img src="../images/unnamed5.png" alt="">
             <%}else{%>
                 <img src="../images/unnamed6.png" alt="">
@@ -26,7 +26,9 @@
         <%for(team of user.team){%>
         <div class="profile-events-registered">
             <div class="profile-events-registered-container">
-                <h5><%=team.name%></h5>
+                <h5 id="profile-events-registered-container-title">
+                    <%=team.name%>
+                </h5>
                 <br>
                 <h5><%=team.code%></h5>
                 <br>

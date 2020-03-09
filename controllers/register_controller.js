@@ -14,20 +14,35 @@ module.exports.createTeam = async function(req,res){
     
         //creating the unique code
         var uniqueCode = await (Date.now().toString(36) + Math.random().toString(36).substr(2, 5)).toUpperCase();
-        
+
+        //finding the user to put the team-id in it's array
+        let user = await User.findById(req.user.id);
+
+        //finding the details regarding this event
+        let event = await Event.findOne({number : req.body.eventNumber});
+
+        let teamName;
+
+        if(event.category == 'solo'){
+            teamName = user.name;
+        }else{
+            teamName = req.body.teamName;
+        }
+
         //creating the new team
         let team = await Team.create({
-            name : req.body.teamName,
+            name : teamName,
             code : uniqueCode,
             event : req.body.eventNumber,
             user : req.user.id
         });
         console.log(team);
             //finding the user to put the team-id in it's array
-            let user = await User.findById(req.user.id);
+            // let user = await User.findById(req.user.id);
     
-            let event = await Event.findOne({number : req.body.eventNumber});
+            // let event = await Event.findOne({number : req.body.eventNumber});
             
+            //pushing team id to event.team
             event.team.push(team.id);
             event.save();
                 

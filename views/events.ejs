@@ -1,30 +1,43 @@
 
     <%= event.name %>
     <br><br>
+    <%for(i of rules){%>
+        <%=i%>
+        <br>
+    <%}%>
     
     <%if(locals.user){%>
         <%if(!found){%>
-        Register for this event
-        <br><br>
-        
-        <%for(i of rules){%>
-            <%=i%>
-            <br>
-        <%}%>
-        I want to join a team
-        <form action="/register/joinTeam" method="POST">
-            <input type="text" name="teamCode" placeholder="Write the team code">
-            <input type="hidden" name="eventNumber" value="<%=event.number%>">
-            <input type="submit" value="Join Team">
-        </form>
-        <br><br>
-        I want to make a team
-        <form action="/register/createTeam" method="POST">
-            <input type="text" name="teamName" placeholder="Write the team Name">
-            <input type="hidden" name="eventNumber" value="<%=event.number%>">
-            <input type="submit" value="Make Team">
-        </form>
-        <%}else{%>
+            Register for this event
+            <br><br>
+            
+            <%if(event.category == 'solo' ){%>
+                <form action="/register/createTeam" method="POST">
+                    <!-- <input type="text" name="teamName" placeholder="Write the team Name"> -->
+                    <input type="hidden" name="eventNumber" value="<%=event.number%>">
+                    <input type="submit" value="Register">
+                </form>
+            <%}%>
+            <%if(event.category == 'team'){%>
+                I want to join a team
+                <form action="/register/joinTeam" method="POST">
+                    <input type="text" name="teamCode" placeholder="Write the team code">
+                    <input type="hidden" name="eventNumber" value="<%=event.number%>">
+                    <input type="submit" value="Join Team">
+                </form>
+                <br><br>
+                I want to make a team
+                <form action="/register/createTeam" method="POST">
+                    <input type="text" name="teamName" placeholder="Write the team Name">
+                    <input type="hidden" name="eventNumber" value="<%=event.number%>">
+                    <input type="submit" value="Make Team">
+                </form>
+        <%}}else{%>
+            <%if(event.category == 'solo'){%>
+                <a href="/register/exit-team?teamId=<%=team._id%>&eventNumber=<%=event.number%>">Exit from this event</a>
+                You have successfully registered for the event
+            <%}%>
+            <%if(event.category == 'team'){%>
             <a href="/register/exit-team?teamId=<%=team._id%>&eventNumber=<%=event.number%>">Exit from this event</a>
       <ul>
           <li>
@@ -41,7 +54,8 @@
               </ul>
           </li>
       </ul>
-    <%}}else{%>
+    <%}}%>
+    <%}else{%>
         <%for(i of rules){%>
             <%=i%>
             <br>

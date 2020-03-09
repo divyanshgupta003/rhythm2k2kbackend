@@ -23,7 +23,7 @@ module.exports.specificEvent = async function(req , res){
             var rules = event.rules.split('<br>');
             
             if(!req.user){
-                console.log(rules);
+                // console.log(rules);
                 var arr
                 res.render('events' , {
                     title : event.name,

@@ -3,6 +3,10 @@ body{
     margin : 0;
     padding:0;
 }
+@font-face{
+    font-family: samarkan;
+    src : url('../webfonts/SamarkanOblique-BXew.ttf');
+}
 .main-section { 
     width : 100%;
     height : auto;
@@ -33,6 +37,9 @@ body{
 .profile-details-section img{
     border-radius : 50%;
     border : 2px solid #ed1b24;
+}
+#profile-events-registered-container-title{
+    font-family: samarkan;
 }
 .profile-events-registered{
     width : 50vw;
