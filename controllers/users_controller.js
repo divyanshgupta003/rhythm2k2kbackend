@@ -51,8 +51,8 @@ module.exports.create = async function(req , res){
             return res.redirect('back');
         }
     }catch(err){
+        console.log(err);
         return res.redirect('/error');
-        
     }
 }
 module.exports.createSession = function(req,res){

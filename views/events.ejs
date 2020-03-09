@@ -6,14 +6,11 @@
         <%if(!found){%>
         Register for this event
         <br><br>
-        <%if(event.category == 'solo'){%>
-            <form action="/register/createTeam" method="POST">
-                <input type="text" name="teamName" placeholder="Write the team Name">
-                <input type="hidden" name="eventNumber" value="<%=event.number%>">
-                <input type="submit" value="Register">
-            </form>
+        
+        <%for(i of rules){%>
+            <%=i%>
+            <br>
         <%}%>
-        <%if(event.category == 'team'){%>
         I want to join a team
         <form action="/register/joinTeam" method="POST">
             <input type="text" name="teamCode" placeholder="Write the team code">
@@ -27,7 +24,7 @@
             <input type="hidden" name="eventNumber" value="<%=event.number%>">
             <input type="submit" value="Make Team">
         </form>
-        <%}}else{%>
+        <%}else{%>
             <a href="/register/exit-team?teamId=<%=team._id%>&eventNumber=<%=event.number%>">Exit from this event</a>
       <ul>
           <li>
@@ -45,6 +42,10 @@
           </li>
       </ul>
     <%}}else{%>
+        <%for(i of rules){%>
+            <%=i%>
+            <br>
+        <%}%>
         You need to sign-in, then only you will be able to access the register button
     <%}%>
     

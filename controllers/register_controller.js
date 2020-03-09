@@ -22,6 +22,7 @@ module.exports.createTeam = async function(req,res){
             event : req.body.eventNumber,
             user : req.user.id
         });
+        console.log(team);
             //finding the user to put the team-id in it's array
             let user = await User.findById(req.user.id);
     
@@ -43,6 +44,7 @@ module.exports.createTeam = async function(req,res){
             return res.redirect(`/event-list/${req.body.eventNumber}`);
                  
     }catch(err){
+        console.log(err);
         return res.redirect('/error');
     }
     

@@ -1,0 +1,98 @@
+body{
+    background: url('../images/unnamed1.jpg');
+    margin : 0;
+    padding:0;
+}
+.main-section { 
+    width : 100%;
+    height : auto;
+    background: url('../images/unnamed1.jpg');
+    background-size: cover;
+}
+.space{
+    width : 100%;
+    height : 130px;
+}
+.profile-details-section {
+    max-width : 40%;
+    height : 90vh;
+    padding : 10px 10%;
+    background: rgba(0,0,0);
+    position : fixed;
+    left:0;
+}
+.profile-details-section button{
+    cursor: pointer;
+    padding: 10px 20px 10px 20px;
+    background: #ed1b24;
+    border : none;
+    outline: none;
+    color : white;
+    transition: 0.5s ease;
+}
+.profile-details-section img{
+    border-radius : 50%;
+    border : 2px solid #ed1b24;
+}
+.profile-events-registered{
+    width : 50vw;
+    height : auto;
+    display: flex;
+    position: fixed;
+    left : 40%;
+    padding : 50px 30px;
+    flex-wrap: wrap;
+}
+.profile-events-registered-container{
+    flex : 45%;
+    max-width : 45%;
+    background-color: #fdc435;
+    padding : 20px 10px;
+    color:black;
+    margin-left : 20px;
+    margin-top : 20px;
+    box-shadow: 10px 10px 8px #888888;
+}
+.profile-events-registered-container button{
+    cursor: pointer;
+    padding: 10px 20px 10px 20px;
+    background: #ed1b24;
+    border : none;
+    outline: none;
+    color : white;
+    transition: 0.5s ease;
+}
+@media screen and (max-width : 576px){
+    .space{
+        width : 100%;
+        height : 116px;
+    }
+    .profile-details-section {
+        max-width : 100%;
+        height : auto;
+        margin-top:0;
+        padding : 15px 10%;
+        background: rgba(0,0,0);
+        position : relative;
+        left:0;
+    }
+    .profile-events-registered{
+        width : 100%;
+        height : 00px;
+        display: flex;
+        position: relative;
+        left : 0%;
+        padding : 50px 30px;
+        flex-wrap: wrap;
+    }
+    .profile-events-registered-container{
+        flex : 90%;
+        max-width : 90%;
+        background-color: #fdc435;
+        padding : 30px 20px;
+        color:black;
+        margin-left : 20px;
+        margin-top : 20px;
+        box-shadow: 10px 10px 8px #888888;
+    }
+}

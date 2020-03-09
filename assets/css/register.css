@@ -106,6 +106,18 @@ fieldset {
   border: 1px solid #aaa;
 }
 
+#users-sign-up-contact select{
+  height: 40px;
+  width: 100%;
+  border: 1px solid #ccc;
+  background: #fff;
+  padding: 10px;
+  resize: none;
+  font-size: 13px;
+  outline : none;
+  color: #777;
+}
+
 #users-sign-up-contact textarea {
   height: 100px;
   max-width: 100%;

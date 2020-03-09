@@ -20,11 +20,15 @@ module.exports.specificEvent = async function(req , res){
     try{
         let event = await Event.findOne({number : req.params.number});
             // console.log(event);
+            var rules = event.rules.split('<br>');
             
             if(!req.user){
+                console.log(rules);
+                var arr
                 res.render('events' , {
                     title : event.name,
-                    event : event
+                    event : event,
+                    rules : rules
                 });
             }else{
                 let user = await User.findById(req.user._id)
@@ -45,7 +49,8 @@ module.exports.specificEvent = async function(req , res){
                                 title : event.name,
                                 event : event,
                                 found : true,
-                                team : team
+                                team : team,
+                                rules : rules
                             })
                         }
                     }
@@ -54,7 +59,8 @@ module.exports.specificEvent = async function(req , res){
                     return res.render('events' , {
                         title : event.name,
                         event : event,
-                        found : false
+                        found : false,
+                        rules : rules
                     })
                 }
             }

@@ -1,19 +1,38 @@
 
-    <button><a href="/users/update">Update Profile</a></button>
-    <button><a href="/">Home</a></button>
-    <br><br><br>
-    <%= user.name %>
-    <br>
-    <%= user.email %>
-    <br><br>
-    Team Name and for the event you have registered
-    <br>
-    <%for(team of user.team){%>
-       <ul>
-           <li>
-               <%=team.name%> <br>
-               <%=team.event%> <br>
-               <%=team.code%> <br>
-           </li>
-       </ul>
-    <%}%>
+    <section class="space">
+
+    </section>
+
+    <!-- <section class="main-section "> -->
+        <div class="profile-details-section">
+            <%if(user.gender == 'male'){%>{
+                <img src="../images/unnamed5.png" alt="">
+            <%}else{%>
+                <img src="../images/unnamed6.png" alt="">
+            <%}%>
+            <br>
+            <h6><small>Name </small> - <%=user.name%></h6> 
+            <h6><small>Email </small> - <%=user.email%></h6>
+            <h6><small>Phone </small> - <%=user.phone%></h6>
+            <h6><small>Unversity</small> - <%=user.college%></h6>
+            <h6><small>Roll number</small> - <%=user.rollNumber%></h6>
+            <h6><small>Branch</small> - <%=user.branch%></h6>
+            <h6><small>Year</small> - <%=user.year%></h6>
+            <h6><small>Gender</small> - <%=user.gender%></h6>
+            
+            <a href="/users/update"><button>Update Profile</button></a>
+        </div>
+
+        <%for(team of user.team){%>
+        <div class="profile-events-registered">
+            <div class="profile-events-registered-container">
+                <h5><%=team.name%></h5>
+                <br>
+                <h5><%=team.code%></h5>
+                <br>
+                <a href=""><button>View your team members</button></a>
+                <br>
+            </div>
+        </div>
+        <%}%>
+    <!-- </section> -->

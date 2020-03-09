@@ -1,0 +1,19 @@
+
+    <button><a href="/users/update">Update Profile</a></button>
+    <button><a href="/">Home</a></button>
+    <br><br><br>
+    <%= user.name %>
+    <br>
+    <%= user.email %>
+    <br><br>
+    Team Name and for the event you have registered
+    <br>
+    <%for(team of user.team){%>
+       <ul>
+           <li>
+               <%=team.name%> <br>
+               <%=team.event%> <br>
+               <%=team.code%> <br>
+           </li>
+       </ul>
+    <%}%>
