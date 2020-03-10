@@ -4,26 +4,26 @@
 
     </div>
     <div class="fluid" id="single-events-event">
-      <h1 style="text-align: center;" class="display-1">
+      <h1 style="text-align: center;" class="display-1 single-event-page-title">
         <%= event.name %>
       </h1>
       <div class="row mx-3 shadow p-3 mb-5 bg-white rounded">
         <div class="col-4 single-events-details shadow-lg p-3 my-3 bg-white rounded">
-          <h2>Date</h2>
+          <h2 class="single-event-page-title">Date</h2>
           <p>9<sup>th</sup>April</p>
         </div>
         <div class="col-4 single-events-details shadow-lg p-3 my-3 bg-white rounded">
-          <h2>Time</h2>
+          <h2 class="single-event-page-title">Time</h2>
           <p>---</p>
         </div>
         <div class="col-4 single-events-details shadow-lg p-3 my-3 bg-white rounded">
-          <h2>Venue</h2>
+          <h2 class="single-event-page-title">Venue</h2>
           <p>---</p>
         </div>
       </div>
       <div class="row mx-3 shadow p-3 mb-5 bg-white rounded justify-content-center">
         <div class="col-12">
-          <h2 style="text-align: center;">Rules</h2>
+          <h2 style="text-align: center;" class="single-event-page-title">Rules</h2>
           <br />
           <ol>
             <%for(i of rules){%>
@@ -48,8 +48,7 @@
     
                 <button
                   type="submit"
-                  class="btn btn-primary"
-                  style="background-color: #e69a3e;border-color: transparent;"
+                  class="single-event-button btn btn-primary"
                 >
                   Register
                 </button>
@@ -76,8 +75,7 @@
 
             <button
               type="submit"
-              class="btn btn-primary"
-              style="background-color: #e69a3e;border-color: transparent;"
+              class="single-event-button btn btn-primary"
             >
               Make a new Team
             </button>
@@ -101,8 +99,7 @@
 
             <button
               type="submit"
-              class="btn btn-primary"
-              style="background-color: #e69a3e;border-color: transparent;">
+              class="single-event-button btn btn-primary">
               Join Team
             </button>
           </form>
@@ -112,8 +109,7 @@
           <div class="col-6 shadow-lg p-3 my-3 bg-white rounded p-3 ">
             <a href="/register/exit-team?teamId=<%=team._id%>&eventNumber=<%=event.number%>">
               <button
-              class="btn btn-primary"
-              style="background-color: #e69a3e;border-color: transparent;">
+              class=" single-event-button btn btn-primary">
               Exit from this event
             </button>
             </a>
@@ -125,27 +121,26 @@
             <div class="col-6 shadow-lg p-3 my-3 bg-white rounded p-3 ">
               <a href="/register/exit-team?teamId=<%=team._id%>&eventNumber=<%=event.number%>">
                 <button
-                class="btn btn-primary"
-                style="background-color: #e69a3e;border-color: transparent;">
+                class="single-event-button btn btn-primary"
+                >
                 Exit from this event
               </button>
               </a>
               <br>
-              Your team includes
               <ul>
-                <p class="h5">
+                <p class="h5 single-event-page-title">
                   Your team Name is
                 </p>
                 <li>
                     <%=team.name%>
                 </li>
-                <p class="h5">
+                <p class="h5 single-event-page-title">
                   Your team code is
                 </p>
                 <li>
                     <%=team.code%>
                 </li>
-                <p class="h5">
+                <p class="h5 single-event-page-title">
                   Your team members includes:-
                 </p>
                 <li>
