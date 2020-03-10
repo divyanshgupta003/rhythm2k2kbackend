@@ -1,6 +1,105 @@
 
-    <form action="/users/update-profile" method="post">
+    <!-- <form action="/users/update-profile" method="post">
         <%= user.email %>
         <input type="text" name="name" placeholder="new name">
         <input type="submit" value="Update">
-    </form>
+    </form> -->
+    <div class="users-sign-up-container">
+        <form id="users-sign-up-contact" action="/users/update-profile" method="post">
+          <fieldset>
+            <input
+              placeholder="<%=user.name%>"
+              type="text"
+              tabindex="2"
+              name="name"
+              required
+            />
+          </fieldset>
+          <fieldset>
+            <input
+              placeholder="<%=user.phone%>"
+              type="tel"
+              tabindex="2"
+              name="phone"
+              required
+            />
+          </fieldset>
+          <fieldset>
+            <input
+              placeholder="<%=user.college%>"
+              type="text"
+              tabindex="2"
+              name="college"
+              required
+            />
+          </fieldset>
+          <fieldset>
+            <input
+              placeholder="<%=user.rollNumber%>"
+              type="text"
+              tabindex="2"
+              name="rollNumber"
+              required
+              name="rollno"
+            />
+          </fieldset>
+          <fieldset>
+            <input
+              placeholder="<%=user.branch%>"
+              type="text"
+              tabindex="2"
+              name="branch"
+              required
+            />
+          </fieldset>
+          <fieldset>
+            <input
+              placeholder="<%=user.year%>"
+              type="number"
+              tabindex="2"
+              name="year"
+              required
+              min="1"
+              max="5"
+            />
+          </fieldset>
+          <fieldset>
+            <select placeholder="Gender" tabIndex = "2" name = "gender" required >
+              <option value="Male">Male</option>
+              <option value="Female">Female</option>
+              <option value="Other">Other</option>
+            </select>
+          </fieldset>
+          <!-- <fieldset>
+            <input
+              placeholder="Your Password"
+              name="password"
+              type="password"
+              tabindex="4"
+              required
+            />
+          </fieldset> -->
+          <!-- <fieldset>
+            <input
+              placeholder="Confirm Password"
+              name="re_password"
+              type="password"
+              tabindex="4"
+              required
+            />
+          </fieldset>-->
+          <fieldset>
+            <button
+              name="submit"
+              type="submit"
+              id="contact-submit"
+              data-submit="...Sending"
+            >
+              Register
+            </button>
+          </fieldset> 
+        </form>
+      </div>
+    </body>
+  </html>
+  

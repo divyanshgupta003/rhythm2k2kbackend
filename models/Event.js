@@ -24,6 +24,9 @@ const eventSchema = new mongoose.Schema({
             ref : 'Team'
         }
     ],
+    type : {
+        type : String
+    },
     category : {
         type : String
     },

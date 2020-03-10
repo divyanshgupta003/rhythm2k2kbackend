@@ -134,6 +134,12 @@ module.exports.updateProfile = async function(req, res){
     
         let user = await User.findById(id);
             user.name = req.body.name;
+            user.gender = req.body.gender;
+            user.college = req.body.college;
+            user.phone = req.body.phone;
+            user.rollNumber = req.body.rollNumber;
+            user.branch = req.body.branch;
+            user.year = req.body.year;
             user.save();
             return res.redirect('/users/dashboard');
         

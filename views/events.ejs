@@ -1,65 +1,171 @@
 
-    <%= event.name %>
-    <br><br>
-    <%for(i of rules){%>
-        <%=i%>
-        <br>
-    <%}%>
-    
-    <%if(locals.user){%>
+
+    <div class="single-event-space" style="width : 100%; height:130px;">
+
+    </div>
+    <div class="fluid" id="single-events-event">
+      <h1 style="text-align: center;" class="display-1">
+        <%= event.name %>
+      </h1>
+      <div class="row mx-3 shadow p-3 mb-5 bg-white rounded">
+        <div class="col-4 single-events-details shadow-lg p-3 my-3 bg-white rounded">
+          <h2>Date</h2>
+          <p>9<sup>th</sup>April</p>
+        </div>
+        <div class="col-4 single-events-details shadow-lg p-3 my-3 bg-white rounded">
+          <h2>Time</h2>
+          <p>---</p>
+        </div>
+        <div class="col-4 single-events-details shadow-lg p-3 my-3 bg-white rounded">
+          <h2>Venue</h2>
+          <p>---</p>
+        </div>
+      </div>
+      <div class="row mx-3 shadow p-3 mb-5 bg-white rounded justify-content-center">
+        <div class="col-12">
+          <h2 style="text-align: center;">Rules</h2>
+          <br />
+          <ol>
+            <%for(i of rules){%>
+              <li>
+                <%=i%>
+              </li>
+          <%}%>
+          </ol>
+        </div>
+      </div>
+      <%if(locals.user){%>
         <%if(!found){%>
-            Register for this event
-            <br><br>
-            
-            <%if(event.category == 'solo' ){%>
-                <form action="/register/createTeam" method="POST">
-                    <!-- <input type="text" name="teamName" placeholder="Write the team Name"> -->
-                    <input type="hidden" name="eventNumber" value="<%=event.number%>">
-                    <input type="submit" value="Register">
-                </form>
-            <%}%>
-            <%if(event.category == 'team'){%>
-                I want to join a team
-                <form action="/register/joinTeam" method="POST">
-                    <input type="text" name="teamCode" placeholder="Write the team code">
-                    <input type="hidden" name="eventNumber" value="<%=event.number%>">
-                    <input type="submit" value="Join Team">
-                </form>
-                <br><br>
-                I want to make a team
-                <form action="/register/createTeam" method="POST">
-                    <input type="text" name="teamName" placeholder="Write the team Name">
-                    <input type="hidden" name="eventNumber" value="<%=event.number%>">
-                    <input type="submit" value="Make Team">
-                </form>
-        <%}}else{%>
-            <%if(event.category == 'solo'){%>
-                <a href="/register/exit-team?teamId=<%=team._id%>&eventNumber=<%=event.number%>">Exit from this event</a>
-                You have successfully registered for the event
-            <%}%>
-            <%if(event.category == 'team'){%>
-            <a href="/register/exit-team?teamId=<%=team._id%>&eventNumber=<%=event.number%>">Exit from this event</a>
-      <ul>
-          <li>
-              <%=team.name%>
-          </li>
-          <li>
-              <%=team.code%>
-          </li>
-          <li>
-              <ul>
-                  <%for(user of team.user){%>
-                    <li><%=user.name%></li>
-                  <%}%>
-              </ul>
-          </li>
-      </ul>
-    <%}}%>
-    <%}else{%>
-        <%for(i of rules){%>
-            <%=i%>
-            <br>
-        <%}%>
-        You need to sign-in, then only you will be able to access the register button
-    <%}%>
+          <!-- for solo events -->
+          <%if(event.category == 'solo' ){%>
+          <div class="row mx-5">
+            <div class="sm-col-12 col-6 shadow-lg p-3 my-3 bg-white rounded p-3  ">
+              Register for this event
+              <form method="POST" action="/register/createTeam">
+                <div class="form-group">
+                  <input type="hidden" name="eventNumber" value="<%=event.number%>">
+                </div>
     
+                <button
+                  type="submit"
+                  class="btn btn-primary"
+                  style="background-color: #e69a3e;border-color: transparent;"
+                >
+                  Register
+                </button>
+              </form>
+            </div>
+            <%}%>
+            <%if(event.category == 'team'){%>
+      <!-- create a team -->
+      <div class="row mx-5">
+        <div class="sm-col-12 col-6 shadow-lg p-3 my-3 bg-white rounded p-3  ">
+          Create a team
+          <form method="POST" action="/register/createTeam">
+            <div class="form-group">
+              <input
+                type="text"
+                class="form-control"
+                name="teamName"
+                aria-describedby="emailHelp"
+                placeholder="Enter Team name"
+                required
+              />
+              <input type="hidden" name="eventNumber" value="<%=event.number%>">
+            </div>
+
+            <button
+              type="submit"
+              class="btn btn-primary"
+              style="background-color: #e69a3e;border-color: transparent;"
+            >
+              Make a new Team
+            </button>
+          </form>
+        </div>
+        <!-- join a team -->
+        <div class="col-6 shadow-lg p-3 my-3 bg-white rounded p-3 ">
+          Join a team
+          <form method="POST" action="/register/joinTeam">
+            <div class="form-group">
+              <input
+                type="text"
+                name="teamCode"
+                class="form-control"
+                aria-describedby="emailHelp"
+                placeholder="Write the team code"
+                required
+              />
+              <input type="hidden" name="eventNumber" value="<%=event.number%>">
+            </div>
+
+            <button
+              type="submit"
+              class="btn btn-primary"
+              style="background-color: #e69a3e;border-color: transparent;">
+              Join Team
+            </button>
+          </form>
+        </div>
+        <%}}else{%>
+          <%if(event.category == 'solo'){%>
+          <div class="col-6 shadow-lg p-3 my-3 bg-white rounded p-3 ">
+            <a href="/register/exit-team?teamId=<%=team._id%>&eventNumber=<%=event.number%>">
+              <button
+              class="btn btn-primary"
+              style="background-color: #e69a3e;border-color: transparent;">
+              Exit from this event
+            </button>
+            </a>
+            You have successfully registered for the event
+          </div>
+          <%}%>
+          <%if(event.category == 'team'){%>
+            
+            <div class="col-6 shadow-lg p-3 my-3 bg-white rounded p-3 ">
+              <a href="/register/exit-team?teamId=<%=team._id%>&eventNumber=<%=event.number%>">
+                <button
+                class="btn btn-primary"
+                style="background-color: #e69a3e;border-color: transparent;">
+                Exit from this event
+              </button>
+              </a>
+              <br>
+              Your team includes
+              <ul>
+                <p class="h5">
+                  Your team Name is
+                </p>
+                <li>
+                    <%=team.name%>
+                </li>
+                <p class="h5">
+                  Your team code is
+                </p>
+                <li>
+                    <%=team.code%>
+                </li>
+                <p class="h5">
+                  Your team members includes:-
+                </p>
+                <li>
+                    <ul>
+                        <%for(user of team.user){%>
+                          <li><%=user.name%></li>
+                        <%}%>
+                    </ul>
+                </li>
+            </ul>
+              
+            </div>
+        <%}}%>
+        <%}else{%>
+        <!-- Sign in before register -->
+        <div class="col-6 shadow-lg p-3 my-3 bg-white rounded p-3 ">
+          You need to sign-in, then only you will be able to access the register button
+        </div>
+        <%}%>
+      </div>
+    </div>
+  </body>
+</html>

@@ -23,18 +23,21 @@
             <a href="/users/update"><button>Update Profile</button></a>
         </div>
 
-        <%for(team of user.team){%>
+        
         <div class="profile-events-registered">
+            <%for(team of user.team){%>
             <div class="profile-events-registered-container">
                 <h5 id="profile-events-registered-container-title">
                     <%=team.name%>
                 </h5>
                 <br>
+                
                 <h5><%=team.code%></h5>
                 <br>
-                <a href=""><button>View your team members</button></a>
+                <a href="/event-list/<%=team.event%>"><button>View your team members</button></a>
                 <br>
             </div>
+            <%}%>
         </div>
-        <%}%>
+        
     <!-- </section> -->

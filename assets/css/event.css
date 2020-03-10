@@ -1,0 +1,17 @@
+body {
+  font-family: "Lobster", cursive;
+}
+
+#single-events-event {
+  background-image: url("tomail2.jpg");
+  background-size: cover;
+  background-repeat: repeat;
+  height: 100%;
+  width: auto;
+  width: 100%;
+  min-height: 1000px;
+  color: #fdc435;
+}
+.single-events-details {
+  text-align: center;
+}
