@@ -1,67 +1,80 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
     <title><%=title%></title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/noty/3.1.4/noty.min.css">
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/noty/3.1.4/noty.min.css"
+    />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/noty/3.1.4/noty.min.js"></script>
-    <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700" rel="stylesheet">
+    <link
+      href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700"
+      rel="stylesheet"
+    />
     <!-- Bootstrap CSS -->
-    <link rel="stylesheet" type="text/CSS" href="/css/bootstrap.min.css">
-    <link href="https://fonts.googleapis.com/css?family=Lobster&display=swap" rel="stylesheet" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.2/animate.min.css" />
+    <link rel="stylesheet" type="text/CSS" href="/css/bootstrap.min.css" />
+    <link
+      href="https://fonts.googleapis.com/css?family=Lobster&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.2/animate.min.css"
+    />
     <!-- FontAwesome CSS -->
-    <link rel="stylesheet" href="/css/fontawesome-all.min.css">
+    <link rel="stylesheet" href="/css/fontawesome-all.min.css" />
 
     <!-- Swiper CSS -->
-    <link rel="stylesheet" href="/css/swiper.min.css">
+    <link rel="stylesheet" href="/css/swiper.min.css" />
 
     <!-- Styles -->
     <link rel="stylesheet" href="/css/register.css" />
     <!-- <link rel="stylesheet" href="/css/login.css/"> -->
-    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/style.css" />
     <!-- <link rel="stylesheet" href="css/login.css" /> -->
-    <link rel="stylesheet" href="/css/profile.css">
+    <link rel="stylesheet" href="/css/profile.css" />
     <link rel="stylesheet" href="/css/event.css" />
-</head>
-<body>
+    <link rel="stylesheet" href="/css/event-list.css" />
+  </head>
+  <body>
+    <%- include('_header'); %> <%-body%>
 
-    <%- include('_header'); %>
-    
-    <%-body%>
+    <script>
 
-        <script>
-            
-            <% if (flash.success && flash.success.length > 0) {%>
-                new Noty({
-                    theme: 'relax',
-                    text: '<%=flash.success%>',
-                    type: 'success',
-                    layout: 'topRight',
-                    timeout: 1500
-                    
-                }).show();    
-            <%} %>
+      <% if (flash.success && flash.success.length > 0) {%>
+          new Noty({
+              theme: 'relax',
+              text: '<%=flash.success%>',
+              type: 'success',
+              layout: 'topRight',
+              timeout: 1500
 
-            <% if (flash.error && flash.error.length > 0) {%>
-                new Noty({
-                    theme: 'relax',
-                    text: '<%= flash.error %>',
-                    type: 'error',
-                    layout: 'topRight',
-                    timeout: 1500
-                    
-                }).show();    
-            <%} %>
+          }).show();
+      <%} %>
+
+      <% if (flash.error && flash.error.length > 0) {%>
+          new Noty({
+              theme: 'relax',
+              text: '<%= flash.error %>',
+              type: 'error',
+              layout: 'topRight',
+              timeout: 1500
+
+          }).show();
+      <%} %>
     </script>
-    <script type='text/javascript' src='/js/jquery.js'></script>
-    <script type='text/javascript' src='/js/masonry.pkgd.min.js'></script>
-    <script type='text/javascript' src='/js/jquery.collapsible.min.js'></script>
-    <script type='text/javascript' src='/js/swiper.min.js'></script>
-    <script type='text/javascript' src='/js/jquery.countdown.min.js'></script>
-    <script type='text/javascript' src='/js/circle-progress.min.js'></script>
-    <script type='text/javascript' src='/js/jquery.countTo.min.js'></script>
-    <script type='text/javascript' src='/js/custom.js'></script>
-</body>
+    <script type="text/javascript" src="/js/jquery.js"></script>
+    <script type="text/javascript" src="/js/masonry.pkgd.min.js"></script>
+    <script type="text/javascript" src="/js/jquery.collapsible.min.js"></script>
+    <script type="text/javascript" src="/js/swiper.min.js"></script>
+    <script type="text/javascript" src="/js/jquery.countdown.min.js"></script>
+    <script type="text/javascript" src="/js/circle-progress.min.js"></script>
+    <script type="text/javascript" src="/js/jquery.countTo.min.js"></script>
+    <script type="text/javascript" src="/js/custom.js"></script>
+  </body>
 </html>
